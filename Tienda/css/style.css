@@ -1,0 +1,38 @@
+body {
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: rgb(102,175,252);
+
+}
+
+#header {
+
+    
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: black;
+    width: 400px;
+    height: 100px;
+    background-color: rgb(103, 255, 204);
+    margin: auto;
+    border-radius: 15px;
+    
+}
+
+#header p{
+
+    padding-top: 30px;
+}
+
+#productos {
+
+    background-color: rgb(103, 255, 204);
+    margin: 10px auto 0;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+}
+
