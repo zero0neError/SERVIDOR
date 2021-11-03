@@ -16,8 +16,6 @@
             <?php
                 include ("../clases/BD.php");
                 BD::llenaLista();
-                
-                
             ?>
         </div>
     </div>
