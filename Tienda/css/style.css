@@ -7,9 +7,13 @@ body {
 
 }
 
+#contenedor{
+
+    height: 100%;
+}
+
 #header {
 
-    
     font-size: 30px;
     font-weight: 700;
     text-align: center;
@@ -31,8 +35,18 @@ body {
 
     background-color: rgb(103, 255, 204);
     margin: 10px auto 0;
-    height: 200px;
+    height: 280px;
     width: 400px;
     border-radius: 10px;
+}
+
+p{
+
+    padding: 5px 0px 0px 5px;
+}
+
+button{
+
+    margin-left: 5px;
 }
 

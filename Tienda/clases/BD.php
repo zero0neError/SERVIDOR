@@ -32,9 +32,9 @@ Class BD{
         self::$lista[0] = new Producto(array("codigo" => 1,"nombre" => "Manzana","nC" => "Man","pvp" => 12));
         self::$lista[1] = new Producto(array("codigo" => 2,"nombre" => "Pera","nC" => "Per","pvp" => 13));
         self::$lista[2] = new Producto(array("codigo" => 3,"nombre" => "Fresa","nC" => "Fre","pvp" => 3));
-        self::$lista[3] = new Producto(array("codigo" => 4,"nombre" => "Melocotón","nC" => "Mel","pvp" => 8));
+        self::$lista[3] = new Producto(array("codigo" => 4,"nombre" => "Melocoton","nC" => "Mel","pvp" => 8));
         self::$lista[4] = new Producto(array("codigo" => 5,"nombre" => "Mango","nC" => "Mang","pvp" => 21));
-        self::$lista[5] = new Producto(array("codigo" => 6,"nombre" => "Sandía","nC" => "San","pvp" => 30));
+        self::$lista[5] = new Producto(array("codigo" => 6,"nombre" => "Sandia","nC" => "San","pvp" => 30));
 
     }
 }
