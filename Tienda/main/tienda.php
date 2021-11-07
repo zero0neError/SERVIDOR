@@ -11,7 +11,7 @@
 <body>
     <div id="contenedor">
         <div id="header">
-            <p>TIENDA ONLINE</p>
+            <h2>TIENDA ONLINE</h2>
         </div>
         <div id="productos">
             <?php
@@ -23,7 +23,7 @@
                 for ($i=0; $i < count($aar); $i++) { 
                     
                     $nombreBoton= $aar[$i]->getNombre();
-                    printf("<p>%s, Pvp: %d€<button id=%s>Comprar</button><span id=%s></span></p>", $aar[$i]->getNombre(), $aar[$i]->getPvP(),"btn".$nombreBoton,"cantidad".$nombreBoton);
+                    printf("<p>%s, Pvp: %d€<button id=%s>Comprar</button><span id=%s></span></p>", $aar[$i]->getNombre(), $aar[$i]->getPvP(),"btn".$nombreBoton, $nombreBoton);
                 }
                 
                 echo "<button id=\"btnCesta\">Añadir a la cesta</button>";

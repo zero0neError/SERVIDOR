@@ -8,12 +8,24 @@ window.addEventListener("load",function(){
     var btnSandia = document.getElementById("btnSandia");
     var btnCesta = document.getElementById("btnCesta");
 
-    btnManzana.onclick=function(){cantidadProducto("cantidadManzana")}
-    btnPera.onclick=function(){cantidadProducto("cantidadPera")}
-    btnFresa.onclick=function(){cantidadProducto("cantidadFresa")}
-    btnMelocoton.onclick=function(){cantidadProducto("cantidadMelocoton")}
-    btnMango.onclick=function(){cantidadProducto("cantidadMango")}
-    btnSandia.onclick=function(){cantidadProducto("cantidadSandia")}
+    btnManzana.onclick=function(){cantidadProducto("Manzana")}
+    btnPera.onclick=function(){cantidadProducto("Pera")}
+    btnFresa.onclick=function(){cantidadProducto("Fresa")}
+    btnMelocoton.onclick=function(){cantidadProducto("Melocoton")}
+    btnMango.onclick=function(){cantidadProducto("Mango")}
+    btnSandia.onclick=function(){cantidadProducto("Sandia")}
+
+    btnCesta.onclick=function(){
+        var vector = [];
+        var arrayPs = document.querySelectorAll("div p span");
+        for (let i = 0; i < arrayPs.length; i++) {
+                
+            vector.push({nombreProducto: arrayPs[i].id, cantidadComprada: parseInt(arrayPs[i].innerHTML.substr(-1), 10)});
+        }
+
+        creaJson(vector);
+        
+    }
 
 });
 
@@ -36,5 +48,6 @@ function cantidadProducto(spanC){
 function creaJson(array){
 
     var jsonText = JSON.stringify(array);
+    localStorage.setItem("cesta", jsonText);
 }
 
