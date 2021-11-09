@@ -37,6 +37,7 @@ Class BD{
         self::$lista[5] = new Producto(array("codigo" => 6,"nombre" => "Sandia","nC" => "San","pvp" => 30));
 
     }
+
 }
 
 ?>

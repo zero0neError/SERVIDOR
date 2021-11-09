@@ -8,6 +8,15 @@ window.addEventListener("load",function(){
     var btnSandia = document.getElementById("btnSandia");
     var btnCesta = document.getElementById("btnCesta");
 
+    var vectorSpans = document.querySelectorAll("div p span");
+
+    for(let i=0;i<vectorSpans.length;i++){
+
+        vectorSpans[i].onclick=function(){
+
+            alert("hola");
+        }
+    }
     btnManzana.onclick=function(){cantidadProducto("Manzana")}
     btnPera.onclick=function(){cantidadProducto("Pera")}
     btnFresa.onclick=function(){cantidadProducto("Fresa")}
@@ -20,7 +29,7 @@ window.addEventListener("load",function(){
         var arrayPs = document.querySelectorAll("div p span");
         for (let i = 0; i < arrayPs.length; i++) {
                 
-            vector.push({nombreProducto: arrayPs[i].id, cantidadComprada: parseInt(arrayPs[i].innerHTML.substr(-1), 10)});
+            vector.push({nombreProducto: arrayPs[i].id, cantidadComprada: parseInt(arrayPs[i].innerHTML.substr(9), 10)});
         }
 
         creaJson(vector);
@@ -37,8 +46,8 @@ function cantidadProducto(spanC){
 
         spanP.innerHTML="Cantidad: 1"
     }else{
-
-        var numeroVeces = (parseInt(spanValue.substr(-1), 10))+1;//ME da el ultimo caracter de la cantidad (el numero en cadena) y lo convierte a numero y le suma 1
+        
+        var numeroVeces = (parseInt(spanValue.substr(9), 10))+1;//ME da el ultimo caracter de la cantidad (el numero en cadena) y lo convierte a numero y le suma 1
         spanP.innerHTML="Cantidad: "+numeroVeces;
 
     }
