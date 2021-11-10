@@ -1,11 +1,11 @@
 <?php
 Class BD{
 
-    private $Conexion;
+    private static $conexion;
 
-    public static conectar(){
+    public static function conectar(){
         try {
-            $Conexion = new PDO('mysql:host=localhost;dbname=tienda', 'root', '');
+            self::$conexion = new PDO('mysql:host=localhost;dbname=tienda', 'root', '');
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -17,23 +17,39 @@ Class BD{
 
     //     $sql="SELECT "
     // }
+
+    public static function insertaUsuario($usuario, $correo, $contraseña, $rol){
+
+        $u=$usuario;
+        $c=$correo;
+        $co=$contraseña;
+        $r=$rol;
+        $sql = "INSERT INTO users values (?,?,?,?)";
+
+        $consulta = self::$conexion->prepare($sql);
+        var_dump($consulta);
+        $consulta->bindParam(1,$u);
+        $consulta->bindParam(2,$c);
+        $consulta->bindParam(3,$co);
+        $consulta->bindParam(4,$r);
+        $consulta->execute();
+    
+    }
+
+    public static function listadoUsuarios(){
+
+        $arr=array();
+        $result = self::$conexion->query("SELECT * FROM users");
+
+        while($registro = $result->fetch(PDO::FETCH_OBJ)){
+
+            array_push($arr, $registro);
+        }
+
+        return $arr;
+
+    }
+
 }
 
-// $result = $Conexion->query("SELECT * FROM users");
 
-// while($registro = $result->fetch(PDO::FETCH_OBJ)){
-
-//     //echo "Nombre ".$registro['Nombre']."<br>Correo: ".$registro['CorreoElectronico']."<br>Contraseña: ".$registro['Contraseña']."<br>Rol: ".$registro['Rol'];
-//     echo "Nombre ".$registro->Nombre."<br>Correo: ".$registro->CorreoElectronico."<br>Contraseña: ".$registro->Contrasena."<br>Rol: ".$registro->Rol."<br><br>";
-// }
-
-if(isset($_POST['txtUsuario']) && isset($_POST['txtCorreo']) && isset($_POST['txtContraseña']) && isset($_POST['seleccionRol'])){
-
-    $consulta = $Conexion->prepare('INSERT INTO users(Usuario, CorreoElectronico, Contrasena, Rol) values (:Usuario,:CorreoElectronico,:Contrasena,:Rol)');
-    $consulta->bindParam(1, $_POST['txtUsuario']);
-    $consulta->bindParam(2, $_POST['txtCorreo']);
-    $consulta->bindParam(3, $_POST['txtContraseña']);
-    $consulta->bindParam(4, $_POST['seleccionRol']);
-    $consultas->exec();
-    header("Location: index.php");
-}

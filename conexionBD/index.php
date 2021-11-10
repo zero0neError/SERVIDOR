@@ -8,12 +8,32 @@
 </head>
 <body>
     <?php
-        require_once("BD.php");
+        require_once "BD.php";
         if(isset($_POST['Enviar'])){
-
+            if(BD::conectar()){
+                
+                BD::insertaUsuario($_POST['txtUsuario'],$_POST['txtCorreo'],$_POST['txtContraseña'],$_POST['seleccionRol']);
+                
+            } 
         }
-        ?>
-    <form method="post" action="">
+        if(isset($_POST['Listado'])){
+            if(BD::conectar()){
+                $arr=array();
+                $arr = BD::listadoUsuarios();
+                foreach ($arr as $v) {
+                    printf("<p>
+                                Usuario: %s<br>
+                                Correo: %s<br>
+                                Contraseña: %s<br>
+                                Rol: %s
+                            </p>",$v->Nombre,$v->CorreoElectronico,$v->Contrasena,$v->Rol);
+                }
+
+                
+            } 
+        }
+    ?>
+    <form method="post" action="#">
         <p>Nombre de usuario: <input type="text" name="txtUsuario"></p>
         <p>Correo Electronico: <input type="text" name="txtCorreo"></p>
         <p>Contraseña: <input type="text" name="txtContraseña"></p>
@@ -22,6 +42,7 @@
             <option>Usuario estandar</option>
         </select>
         <p><input type="submit" name="Enviar" value="Registrarse"></p>
+        <p><input type="submit" name="Listado" value="Ver usuarios (detallados)"></p>
       </form>
       
 </body>
