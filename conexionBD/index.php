@@ -12,8 +12,8 @@
         if(isset($_POST['Enviar'])){
             if(BD::conectar()){
                 
-                BD::insertaUsuario($_POST['txtUsuario'],$_POST['txtCorreo'],$_POST['txtContraseña'],$_POST['seleccionRol']);
-                
+                //BD::insertaUsuario($_POST['txtUsuario'],$_POST['txtCorreo'],$_POST['txtContraseña'],$_POST['seleccionRol']);
+                BD::insertarFila("users",array($_POST['txtUsuario'],$_POST['txtCorreo'],$_POST['txtContraseña'],$_POST['seleccionRol']));
             } 
         }
         if(isset($_POST['Listado'])){

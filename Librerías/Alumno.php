@@ -25,11 +25,6 @@
 
         //SETTERS AND GETTERS
 
-
-
-
-
-
         public function setNombre($n){
 
             this->nombre = $n; 
