@@ -18,7 +18,7 @@ Class Sesion{
 
         (isset($_SESSION[$clave]))?return $_SESSION[$clave]:return Null;
     }
-
+    
     public static setSesion($clave,$valor){
 
         $_SESSION[$clave]=$valor;
