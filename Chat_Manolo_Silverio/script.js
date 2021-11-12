@@ -6,9 +6,22 @@ window.addEventListener("load",function(){
     var ultimo=0;
     var usuario = form["txtUsuario"];
     var mensaje = form["areaMensaje"];
+    usuario.value=localStorage.getItem("nombreUsuario");
+
+    mensaje.onkeydown=function(ev){
+
+        if(ev.key=="Enter"){
+
+            enviar.click();
+            mensaje.value="";
+        }
+    }
+
     enviar.onclick=function(ev){
         ev.preventDefault();
         if(usuario.value!="" && mensaje.value!=""){
+
+            localStorage.setItem("nombreUsuario",usuario.value);
 
             const ajax = new XMLHttpRequest();//CREAMOS EL OBJETO AJAX
             ajax.onreadystatechange=function(){
@@ -22,7 +35,11 @@ window.addEventListener("load",function(){
         }
     }
 
-    setInterval(pedirMensajes, 5000);
+    setInterval(pedirMensajes, 2000);
+    setInterval(function(){
+
+        
+    },100000);
 
     function pedirMensajes(){
         
@@ -37,6 +54,7 @@ window.addEventListener("load",function(){
     
                         var div=crearContenido(respuesta.mensajes[i],usuario.value);
                         contenedor.appendChild(div);
+                        document.getElementById("contenedor").scrollTop=document.getElementById("contenedor").scrollHeight
                     }
                 }
                 ultimo=respuesta.ultimo;
