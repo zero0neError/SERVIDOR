@@ -12,8 +12,8 @@ if(isset($_POST["peticion"])){
             else{
                 $siguiente=1;
             }
-
-            $sql="SELECT * FROM mensaje where Id>=${siguiente}";
+            $ultimo=0;
+            $sql="SELECT * FROM mensaje where Id>=${siguiente} order by Id asc";
             
             $consulta = BD::getConexion()->query($sql);
             $object=new stdClass();

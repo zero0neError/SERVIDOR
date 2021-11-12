@@ -4,6 +4,5 @@ textarea{
     height: 50px;
     width: 400px;
     font-size: 20px;
-    resize: none;
-    
+    resize: none;  
 }

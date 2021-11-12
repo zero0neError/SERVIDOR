@@ -3,6 +3,7 @@ window.addEventListener("load",function(){
     const enviar=document.getElementById("Enviar");
     const form = document.getElementById("form1");
     const contenedor = document.getElementById("contenedor");
+    var ultimo=0;
     var usuario = form["txtUsuario"];
     var mensaje = form["areaMensaje"];
     enviar.onclick=function(ev){
@@ -24,7 +25,7 @@ window.addEventListener("load",function(){
     setInterval(pedirMensajes, 5000);
 
     function pedirMensajes(){
-        var ultimo=0;
+        
         const ajax = new XMLHttpRequest();
         ajax.onreadystatechange=function(){
             
@@ -45,7 +46,8 @@ window.addEventListener("load",function(){
     
         ajax.open("POST","peticiones.php");//pondiramos la ruta del archivo que se encarga de hacer algoque no me he enterao
         ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ajax.send("peticion=pedirMensajes&ultimo"+ultimo);
+        console.log(ultimo);
+        ajax.send("peticion=pedirMensajes&ultimo="+ultimo);
     
     }
     
