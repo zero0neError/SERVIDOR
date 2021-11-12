@@ -14,7 +14,6 @@ window.addEventListener("load",function(){
                 if(ajax.readyState==4 && ajax.status==200){//SI EL SERVIDOR RESPONDE BIEN...
                     var respuesta = ajax.responseText;//CAPTURAMOS LA RESPUESTA QUE ES CAPTURADA POR EL AJAX
                 }
-
             }
             ajax.open("POST","peticiones.php");
             ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");//ESPECIFICAMOS QUE ENVIAMOS DESDE UN FORMULARIOLL
