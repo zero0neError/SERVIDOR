@@ -64,10 +64,10 @@ Class BD{
         }
     }
 
-    public static function listadoUsuarios(){
+    public static function listadoContenidoTabla($tabla){
 
         $arr=array();
-        $result = self::$conexion->query("SELECT * FROM users");
+        $result = self::$conexion->query("SELECT * FROM '$tabla'");
 
         while($registro = $result->fetch(PDO::FETCH_OBJ)){
 
