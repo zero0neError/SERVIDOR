@@ -3,6 +3,7 @@ Class BD{
 
     private static $conexion;
 
+
     public static function conectar(){
         try {
             self::$conexion = new PDO('mysql:host=localhost;dbname=foro', 'root', '');
@@ -11,6 +12,11 @@ Class BD{
             return false;
         }
         
+    }
+
+    public static function getConexion(){
+
+        return self::$conexion;
     }
     // TODO Hacer un metodo versatil q le pases la tabla que quieres insertar y un array con los parametros de la tabla que quieres insertar, y el solo te coja la contidad de elementos del array y asi puedas poner tantas interrogaciones como elementos en la consulta
     public static function insertarFila($BD,$tabla,$array){
@@ -41,7 +47,7 @@ Class BD{
 
     public static function insertaFilaMensaje($usuario,$mensaje){
 
-        $sql="INSERT INTO mensaje (Id, Usuario, Mensaje, Hora) values (null,?,?,NOW())";
+        $sql="INSERT INTO mensaje (Usuario, Mensaje, Hora) values (?,?,NOW())";
         $consulta = self::$conexion->prepare($sql);
         $consulta->bindParam(1,$usuario);
         $consulta->bindParam(2,$mensaje);

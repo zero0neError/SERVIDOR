@@ -1,20 +1,21 @@
 <?php
-if(isset($_GET['peticion'])){
 
-    if($_GET['peticion']=="pedirMensajes"){
+if(isset($_POST["peticion"])){
+    if($_POST['peticion']=="pedirMensajes"){
         include_once "BD.php";
            
         if(BD::conectar()){
 
-            if (isset($_GET['ultimo'])){
-                $siguiente=$_GET["ultimo"] +1;
+            if (isset($_POST['ultimo'])){
+                $siguiente=$_POST["ultimo"] +1;
             }
             else{
                 $siguiente=1;
             }
 
-            $sql="SELECT * FROM mensaje where Id>=${ultimoId}";
-            $consulta = BD::conexion->query($sql);
+            $sql="SELECT * FROM mensaje where Id>=${siguiente}";
+            
+            $consulta = BD::getConexion()->query($sql);
             $object=new stdClass();
             $object->mensajes=[];
             $ultimo=$siguiente-1;
@@ -35,11 +36,13 @@ if(isset($_GET['peticion'])){
         
     }
 
-    if($_GET['peticion']=="escribirMensajes"){
-
+    if($_POST['peticion']=="escribirMensajes"){
+        
         if(isset($_POST['enviar'])){
+            
             include_once "BD.php";
             if(BD::conectar()){
+                
                 if(BD::insertaFilaMensaje($_POST["txtUsuario"],$_POST["areaMensaje"])){
                     echo "OK!";
                 }else{
@@ -52,5 +55,5 @@ if(isset($_GET['peticion'])){
   
 }else{
 
-    //Si no viene ninguna opcion por get
+    echo "Algo a ido mal";
 }
