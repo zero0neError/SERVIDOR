@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="HolaServicio" targetNamespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/">
+  <types>
+    <xsd:schema targetNamespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="HolaServicioPort">
+    <operation name="traeUsuarios">
+      <input message="tns:traeUsuariosIn"/>
+      <output message="tns:traeUsuariosOut"/>
+    </operation>
+    <operation name="resta">
+      <input message="tns:restaIn"/>
+      <output message="tns:restaOut"/>
+    </operation>
+    <operation name="suma">
+      <input message="tns:sumaIn"/>
+      <output message="tns:sumaOut"/>
+    </operation>
+  </portType>
+  <binding name="HolaServicioBinding" type="tns:HolaServicioPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="traeUsuarios">
+      <soap:operation soapAction="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/#traeUsuarios"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </output>
+    </operation>
+    <operation name="resta">
+      <soap:operation soapAction="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/#resta"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </output>
+    </operation>
+    <operation name="suma">
+      <soap:operation soapAction="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/#suma"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="traeUsuariosIn">
+    <part name="posicion" type="xsd:int"/>
+  </message>
+  <message name="traeUsuariosOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="restaIn">
+    <part name="a" type="xsd:int"/>
+    <part name="b" type="xsd:int"/>
+  </message>
+  <message name="restaOut">
+    <part name="return" type="xsd:int"/>
+  </message>
+  <message name="sumaIn">
+    <part name="a" type="xsd:int"/>
+    <part name="b" type="xsd:int"/>
+  </message>
+  <message name="sumaOut">
+    <part name="return" type="xsd:int"/>
+  </message>
+  <service name="HolaServicioService">
+    <port name="HolaServicioPort" binding="tns:HolaServicioBinding">
+      <soap:address location="http://localhostSERVIDOR/SEGUNDO_TRIMESTRE/SOAPPHP/ServicioSoap/"/>
+    </port>
+  </service>
+</definitions>
